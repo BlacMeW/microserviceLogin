@@ -15,10 +15,19 @@ Route::get('/microservice-login', [AuthController::class, 'loginFromMicroservice
 
 Route::get('/login', [AuthController::class, 'login']);
 
+// Route::get('/protected-route', function (\Illuminate\Http\Request $request) {
+//     return response()->json([
+//         'success' => true,
+//         'message' => 'Middleware executed successfully.',
+//         'data' => $request->get('microservice_response'),
+//     ]);
+// })->middleware(MicroserviceLoginMiddleware::class);
+
+
 Route::get('/protected-route', function (\Illuminate\Http\Request $request) {
     return response()->json([
         'success' => true,
         'message' => 'Middleware executed successfully.',
         'data' => $request->get('microservice_response'),
     ]);
-})->middleware(MicroserviceLoginMiddleware::class);
+})->middleware('microservice.login');

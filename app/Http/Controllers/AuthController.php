@@ -14,7 +14,7 @@ class AuthController extends Controller
          // API endpoint URL
          $url = 'http://127.0.0.1:8000/api/login';
 
-         // Request ကို form-data format ဖြင့် ပို့ရန်
+        
          $response = Http::asForm()
              ->withHeaders([
                  'Accept' => 'application/json',
@@ -24,7 +24,7 @@ class AuthController extends Controller
                  'password' => 'Asd123!@#',
              ]);
  
-         // Response လက်ခံပြီး အောင်မြင်မှုစစ်ဆေး
+        
          if ($response->successful()) {
              return response()->json([
                  'success' => true,
@@ -32,7 +32,7 @@ class AuthController extends Controller
              ]);
          }
  
-         // အောင်မမြင်ပါက Error Message ပြန်ပေး
+        
          return response()->json([
              'success' => false,
              'message' => $response->body(),

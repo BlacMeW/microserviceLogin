@@ -1,6 +1,8 @@
 <?php 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\AuthController;
+use App\Http\Middleware\MicroserviceLoginMiddleware;
 
 // API Route with Middleware
 Route::post('/protected-route', function (Request $request) {

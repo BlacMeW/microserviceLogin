@@ -22,5 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $this->app['router']->aliasMiddleware('microservice.login', MicroserviceLoginMiddleware::class);
+
+        
     }
 }

@@ -31,3 +31,11 @@ Route::get('/protected-route', function (\Illuminate\Http\Request $request) {
         'data' => $request->get('microservice_response'),
     ]);
 })->middleware('microservice.login');
+
+Route::post('/protected-route', function (\Illuminate\Http\Request $request) {
+    return response()->json([
+        'success' => true,
+        'message' => 'Middleware executed successfully.',
+        'data' => $request->get('microservice_response'),
+    ]);
+})->middleware('microservice.login');

@@ -1,0 +1,31 @@
+<?php 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+// API Route with Middleware
+Route::post('/protected-route', function (Request $request) {
+    return response()->json([
+        'success' => true,
+        'message' => 'API Route executed successfully.',
+        'data' => $request->all(),
+    ]);
+})->middleware('microservice.login')->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
+
+
+// // API Route with Middleware
+// Route::get('/protected-route', function (Request $request) {
+//     return response()->json([
+//         'success' => true,
+//         'message' => 'API Route executed successfully.',
+//         'data' => $request->all(),
+//     ]);
+// })->middleware('microservice.login');
+
+
+Route::get('/protected-route', function (\Illuminate\Http\Request $request) {
+    return response()->json([
+        'success' => true,
+        'message' => 'Middleware executed successfully.',
+        'data' => $request->get('microservice_response'),
+    ]);
+})->middleware('microservice.login');
